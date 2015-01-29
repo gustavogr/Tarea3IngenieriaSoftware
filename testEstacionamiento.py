@@ -65,5 +65,12 @@ class TestReservar(unittest.TestCase):
 		e = Estacionamiento(10)
 		self.assertRaises(ValueError, e.reservar, 1400, 1525)
 		
+	def testEsquinaParametros(self):
+		# Agregado para incluir esquina
+		e = Estacionamiento(10)
+		assert e.reservar(600,1800)
+
+	
+
 if __name__ == "__main__":
     unittest.main()
