@@ -70,7 +70,12 @@ class TestReservar(unittest.TestCase):
 		e = Estacionamiento(10)
 		assert e.reservar(600,1800)
 
-	
+	def testEsquinaHoraInicialLlena(self):
+		# Agregado para incluir esquina
+		e = Estacionamiento(10)
+		for i in range(10):
+			e.reservar(600,700)
+		assert not e.reservar(600,700)
 
 if __name__ == "__main__":
     unittest.main()
