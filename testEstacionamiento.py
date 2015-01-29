@@ -51,13 +51,19 @@ class TestReservar(unittest.TestCase):
 		self.assertRaises(ValueError, e.reservar, 1500, 1900)
 
 	def testReservarHoraInicialMayorAHoraFinal(self):
-		# Agregado por incremento TDD sin frontera
+		# Agregado por incremento TDD sin frontera.
 		e = Estacionamiento(10)
 		self.assertRaises(ValueError, e.reservar, 1400, 800)
 
 	def testReservarHoraInicialConMinutos(self):
-		# Agregado por incremento TDD sin frontera
+		# Agregado por incremento TDD sin frontera.
 		e = Estacionamiento(10)
 		self.assertRaises(ValueError, e.reservar, 1425, 1500)
+
+	def testReservarHorarioFinalConMinutos(self):
+		# Agregado por incremento TDD sin frontera.
+		e = Estacionamiento(10)
+		self.assertRaises(ValueError, e.reservar, 1400, 1525)
+		
 if __name__ == "__main__":
     unittest.main()

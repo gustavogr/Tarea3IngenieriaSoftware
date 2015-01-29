@@ -12,6 +12,8 @@ class Estacionamiento(object):
 			raise ValueError('La hora de inicio es mayor que la hora final.')
 		if (hInicio%100 != 0):
 			raise ValueError('La hora inicial de la reservacion contempla minutos')
+		if (hFinal%100 != 0):
+			raise ValueError('La hora final de la reservacion contempla minutos')
 		numSolapados = 0
 		for i in self.reservaciones :
 			if i[0] >= hFinal :
