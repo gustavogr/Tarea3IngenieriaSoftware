@@ -98,7 +98,10 @@ class TestReservar(unittest.TestCase):
 			e.reservar(600,1800)
 		assert not e.reservar(600,1800)		
 
-
+	def testHorasNegativas(self):
+		# Agregado para caso malicia
+		e = Estacionamiento(10)
+		self.assertRaises(ValueError, e.reservar, -600, -333)
 
 if __name__ == "__main__":
     unittest.main()
