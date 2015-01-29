@@ -4,6 +4,8 @@ class Estacionamiento(object):
 		self.capacidad = capacidad
 
 	def reservar(self, hInicio, hFinal):
+		if (hInicio < 600):
+			raise ValueError('Hora de inicio de la reservacion invalida.')
 		numSolapados = 0
 		for i in self.reservaciones :
 			if i[0] >= hFinal :
