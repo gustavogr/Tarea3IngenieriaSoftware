@@ -22,6 +22,12 @@ class TestReservar(unittest.TestCase):
 			e.reservar(800, 900)
 		assert e.reservar(800, 900)
 
+	def testReservarConOtroHorarioLleno(self):
+		e = Estacionamiento(10)
+		for i in range(10):
+			e.reservar(800, 900)
+		assert e.reservar(1500, 1700)
+
 
 if __name__ == "__main__":
     unittest.main()
