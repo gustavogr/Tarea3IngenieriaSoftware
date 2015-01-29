@@ -14,7 +14,7 @@ class TestReservar(unittest.TestCase):
 		e = Estacionamiento(10)
 		for i in range(10):
 			e.reservar(800, 900)
-		assert not e.reservar(800, 900)
+		assert not e.reservar(800, 900) 
 
 	def testReservarHorarioNoVacio(self):
 		e = Estacionamiento(10)
@@ -27,6 +27,12 @@ class TestReservar(unittest.TestCase):
 		for i in range(10):
 			e.reservar(800, 900)
 		assert e.reservar(1500, 1700)
+
+	def testReservarHorarioFinalLleno(self):
+		e = Estacionamiento(10)
+		for i in range(10):
+			e.reservar(800,1000)
+		assert not e.reservar(700,900)
 
 
 if __name__ == "__main__":

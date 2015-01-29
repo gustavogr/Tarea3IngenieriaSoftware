@@ -6,15 +6,14 @@ class Estacionamiento(object):
 	def reservar(self, hInicio, hFinal):
 		numSolapados = 0
 		for i in self.reservaciones :
-			if i[0] > hInicio:
+			if i[0] >= hFinal :
 				break
-			numSolapados = numSolapados - i[1]
-		if numSolapados < self.capacidad:
-			self.agregarInicioEnOrden(hInicio)
-			self.agregarFinalEnOrden(hFinal)
-			return True
-		else:
-			return False
+			numSolapados -= i[1]
+			if i[0] >= hInicio  and numSolapados == self.capacidad:
+				return False
+		self.agregarInicioEnOrden(hInicio)
+		self.agregarFinalEnOrden(hFinal)
+		return True	
 
 	def agregarInicioEnOrden(self, hInicio):
 		i = 0
