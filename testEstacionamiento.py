@@ -34,13 +34,17 @@ class TestReservar(unittest.TestCase):
 			e.reservar(800,1000)
 		assert not e.reservar(700,900)
 
-	def testReservarHoraInicialInvalida(self):
+	def testReservarHoraInicialMenorALimiteInferior(self):
 		e = Estacionamiento(10)
 		self.assertRaises(ValueError, e.reservar, 500, 800)
 
-	def testReservarHoraFinalInvalida(self):
+	def testReservarHoraFinalMayorALimiteSuperior(self):
 		e = Estacionamiento(10)
 		self.assertRaises(ValueError, e.reservar, 1500, 1900)
 
+	def testReservarHoraInicialMayorAHoraFinal(self):
+		e = Estacionamiento(10)
+		self.assertRaises(ValueError, e.reservar, 1400, 800)
+		
 if __name__ == "__main__":
     unittest.main()
