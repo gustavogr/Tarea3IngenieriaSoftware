@@ -11,34 +11,7 @@ class Estacionamiento(object):
 			numSolapados -= i[1]
 			if i[0] >= hInicio  and numSolapados == self.capacidad:
 				return False
-		self.agregarInicioEnOrden(hInicio)
-		self.agregarFinalEnOrden(hFinal)
+		self.reservaciones.append((hInicio,-1))
+		self.reservaciones.append((hFinal,1))
+		self.reservaciones = sorted(self.reservaciones, key=lambda x: (x[0],-x[1]))
 		return True	
-
-	def agregarInicioEnOrden(self, hInicio):
-		i = 0
-		hInicioEsMayor = True
-		largoLista = len(self.reservaciones)
-		while (i < largoLista) & hInicioEsMayor:
-			if self.reservaciones[i][0] <= hInicio:
-				i = i + 1
-			else:
-				hInicioEsMayor = False
-		if i == largoLista:
-			self.reservaciones.append((hInicio, -1))
-		else:
-			self.reservaciones.insert(i, (hInicio, -1))
-	
-	def agregarFinalEnOrden(self, hFinal):
-		i = 0
-		hFinalEsMayor = True
-		largoLista = len(self.reservaciones)
-		while (i < largoLista) & hFinalEsMayor:
-			if self.reservaciones[i][0] < hFinal:
-				i = i + 1
-			else:
-				hFinalEsMayor = False
-		if i == largoLista:
-			self.reservaciones.append((hFinal, +1))
-		else:
-			self.reservaciones.insert(i, (hFinal, +1))
