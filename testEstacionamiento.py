@@ -38,5 +38,9 @@ class TestReservar(unittest.TestCase):
 		e = Estacionamiento(10)
 		self.assertRaises(ValueError, e.reservar, 500, 800)
 
+	def testReservarHoraFinalInvalida(self):
+		e = Estacionamiento(10)
+		self.assertRaises(ValueError, e.reservar, 1500, 1900)
+
 if __name__ == "__main__":
     unittest.main()
